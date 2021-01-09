@@ -1,0 +1,8 @@
+{
+  "name": "Kanban-hong",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "98f3801e"
+}
