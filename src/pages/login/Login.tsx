@@ -1,40 +1,80 @@
-import React from 'react'
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonInput } from '@ionic/react'
-import BaseComponent from '../../components/base/BaseComponent';
+import React from "react";
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonGrid,
+  IonRow,
+  IonInput,
+  IonLabel,
+  IonItem,
+  IonButton,
+} from "@ionic/react";
+import BaseComponent from "../../components/base/BaseComponent";
 
-type Props = {
-
-}
+type Props = {};
 
 type State = {
   username: string;
   password: string;
   rememberMe: boolean;
-}
+};
 export default class LoginPage extends BaseComponent<Props, State> {
-  title = "Login"
+  title = "Login";
   state = {
-    username: '',
-    password: '',
-    rememberMe: false
+    username: "",
+    password: "",
+    rememberMe: false,
+  };
+
+  check(): boolean {
+    return true;
   }
 
-  async login() {
-  
-  }
-  
+  async login() {}
+
   render() {
     return (
       <IonPage>
         <IonGrid>
           <IonRow>
-            <span>Kanban - Hong</span>
+            <IonLabel>Kanban - Hong</IonLabel>
           </IonRow>
           <IonRow>
-            <IonInput value={this.state.username} placeholder="请输入用户名" onIonChange={e => this.setState({username: e?.detail?.value ?? ""})}></IonInput>
+            <IonItem>
+              <IonLabel position="floating">用户名</IonLabel>
+              <IonInput
+                value={this.state.username}
+                onIonChange={(e) =>
+                  this.setState({ username: e?.detail?.value ?? "" })
+                }
+              ></IonInput>
+            </IonItem>
+          </IonRow>
+          <IonRow>
+            <IonItem>
+              <IonLabel position="floating">密码</IonLabel>
+              <IonInput
+                value={this.state.password}
+                onIonChange={(e) =>
+                  this.setState({ password: e?.detail?.value ?? "" })
+                }
+              ></IonInput>
+            </IonItem>
+          </IonRow>
+          <IonRow>
+            <IonItem style={{width: "100%"}}>
+              <IonButton expand="block" onClick={this.login}>
+                登陆
+              </IonButton>
+            </IonItem>
           </IonRow>
         </IonGrid>
       </IonPage>
-    )
+    );
   }
 }
