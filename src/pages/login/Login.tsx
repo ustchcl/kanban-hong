@@ -13,6 +13,7 @@ import {
   IonLabel,
   IonItem,
   IonButton,
+  IonCheckbox,
 } from "@ionic/react";
 import BaseComponent from "../../components/base/BaseComponent";
 
@@ -21,14 +22,12 @@ type Props = {};
 type State = {
   username: string;
   password: string;
-  rememberMe: boolean;
 };
 export default class LoginPage extends BaseComponent<Props, State> {
   title = "Login";
   state = {
     username: "",
     password: "",
-    rememberMe: false,
   };
 
   check(): boolean {
@@ -36,14 +35,19 @@ export default class LoginPage extends BaseComponent<Props, State> {
   }
 
   async login() {}
+  async register() {
+    this.$message("You clicked register btn")
+  }
 
   render() {
     return (
       <IonPage>
-        <IonGrid>
+        <IonGrid style={{display: 'flex', flexDirection: 'column'}}>
+          <div style={{flex: 2}}/>
           <IonRow>
-            <IonLabel>Kanban - Hong</IonLabel>
+            <div style={{width: "100%", fontSize: 22, fontWeight: 'bold', textAlign: 'center'}}>Kanban - Hong</div>
           </IonRow>
+          <div style={{flex: 2}}/>
           <IonRow>
             <IonItem>
               <IonLabel position="floating">用户名</IonLabel>
@@ -59,6 +63,7 @@ export default class LoginPage extends BaseComponent<Props, State> {
             <IonItem>
               <IonLabel position="floating">密码</IonLabel>
               <IonInput
+                type="password"
                 value={this.state.password}
                 onIonChange={(e) =>
                   this.setState({ password: e?.detail?.value ?? "" })
@@ -66,13 +71,19 @@ export default class LoginPage extends BaseComponent<Props, State> {
               ></IonInput>
             </IonItem>
           </IonRow>
+          <div style={{flex: 1}}/>
           <IonRow>
-            <IonItem style={{width: "100%"}}>
-              <IonButton expand="block" onClick={this.login}>
-                登陆
+              <IonButton style={{width: "100%"}} expand="block" onClick={this.login}>
+                登录
               </IonButton>
-            </IonItem>
           </IonRow>
+          <div style={{height: 10}}/>
+          <IonRow>
+              <IonButton color="secondary" style={{width: "100%"}} expand="block" onClick={this.register.bind(this)}>
+                注册
+              </IonButton>
+          </IonRow>
+          <div style={{flex: 4}}/>
         </IonGrid>
       </IonPage>
     );

@@ -4,6 +4,7 @@ import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react'
 import Menu from '../../components/Menu'
 import { Redirect, Route } from 'react-router-dom';
 import Page from '../Page'
+import Kanban from '../kanban/Kanban';
 
 export default class Home extends BaseComponent<{}, {}> {
 
@@ -12,7 +13,8 @@ export default class Home extends BaseComponent<{}, {}> {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            <Route path="/page/:name" component={Page} exact />
+            <Route path="/page/kanban" component={Kanban} exact/>
+            <Route path="/page/test/:name" component={Page} exact />
             <Redirect from="/" to="/page/Inbox" exact />
           </IonRouterOutlet>
         </IonSplitPane>
