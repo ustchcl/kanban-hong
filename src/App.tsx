@@ -24,7 +24,7 @@ import "./theme/variables.css";
 import LoginPage from "./pages/login/Login";
 import HomePage from "./pages/home/Home";
 import { toastBS } from "./utils/GlobalConstants";
-import { skip } from 'rxjs/operators'
+import { skip } from "rxjs/operators";
 
 type State = {
   showToast: boolean;
@@ -42,14 +42,17 @@ export default class App extends React.Component<{}, State> {
   };
 
   componentDidMount() {
-    toastBS.asObservable().pipe(skip(1)).subscribe(params => {
-      this.setState({
-        showToast: true,
-        message: params.message,
-        duration: params.duration,
-        closable: params.closable
-      })
-    })
+    toastBS
+      .asObservable()
+      .pipe(skip(1))
+      .subscribe((params) => {
+        this.setState({
+          showToast: true,
+          message: params.message,
+          duration: params.duration,
+          closable: params.closable,
+        });
+      });
   }
 
   render() {
